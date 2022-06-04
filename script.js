@@ -1,6 +1,3 @@
-let playerSelection = prompt('Rock, paper or scissors');
-let computerSelection = computerPlay();
-
 
 function computerPlay(){
     random = Math.floor(Math.random() * 3) + 1;
@@ -12,16 +9,47 @@ function computerPlay(){
     }else{
         return 'scissors';
     }
+    
 }
 
 
 function playRound(playerSelection, computerSelection){
+    
     if(playerSelection === computerSelection){
-        console.log('You win');
+       return "you won";
     }else{
-        console.log('You lost');
+       return "you lost";
     }
 }
 
+function game(){
 
-playRound(playerSelection, computerSelection);
+    let userCount = 0;
+    let computerCount = 0;
+
+    for(let i = 0; i < 5; i++){
+        let computerSelection = computerPlay();
+        let playerSelection = prompt('Rock, paper or scissors');
+        var res = playRound(playerSelection, computerSelection);
+
+        if(res === 'you won'){
+            userCount++;
+        }else{
+            computerCount++;
+        }
+    }
+
+    console.log('SCORES: ' + userCount + ' - ' + computerCount);
+
+    if(userCount > computerCount){
+        console.log("you won");
+    }else{
+        console.log("you lost");
+    }
+    
+    
+}
+
+
+game();
+
